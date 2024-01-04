@@ -6,7 +6,7 @@ public class UserDto {
     private String role;
     private String fullname;
 
-    public UserDto(String email, String password, String role, String fullname) {
+    public UserDto(String email, String password, String fullname, String role) {
         super();
         this.email = email;
         this.password = password;

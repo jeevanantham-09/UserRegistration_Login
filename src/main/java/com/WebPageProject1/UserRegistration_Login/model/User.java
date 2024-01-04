@@ -1,6 +1,8 @@
 package com.WebPageProject1.UserRegistration_Login.model;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "Users",uniqueConstraints = @UniqueConstraint(columnNames = "email"))
@@ -9,47 +11,29 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    public User() {
+    }
+
+    @Getter
+    @Setter
     private String email;
+    @Setter
+    @Getter
     private String password;
+    @Setter
+    @Getter
     private String fullName;
+    @Setter
+    @Getter
     private String role;
 
     public User(String email, String password, String fullName, String role) {
+        super();
         this.email = email;
         this.password = password;
         this.fullName = fullName;
         this.role = role;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
 }

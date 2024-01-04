@@ -1,5 +1,6 @@
 package com.WebPageProject1.UserRegistration_Login.Config;
 
+
 import com.WebPageProject1.UserRegistration_Login.Service.CustomSuccessHandler;
 import com.WebPageProject1.UserRegistration_Login.Service.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,10 +36,13 @@ public class SecurityConfig {
         http.csrf(c->c.disable())
                 .authorizeHttpRequests(request->request.requestMatchers("/admin-page")
                         .hasAuthority("ADMIN").requestMatchers("/user-page")
-                        .hasAuthority("USER").requestMatchers("/registration","/css/**")
+                        .hasAuthority("USER").requestMatchers("/home").permitAll()
+                        .requestMatchers("/registration","/css/**")
                         .permitAll().anyRequest().authenticated())
+
                 .formLogin(form-> form.loginPage("/login").loginProcessingUrl("/login")
                         .successHandler(customSuccessHandler).permitAll())
+
 
                 .logout(form->form.invalidateHttpSession(true).clearAuthentication(true)
                         .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))

@@ -18,8 +18,8 @@ public class UserServiceImp implements UserService{
 
     @Override
     public User save(UserDto userDto) {
-        User user = new User(userDto.getFullname(),userDto.getEmail(),
-                (passwordEncoder.encode(userDto.getPassword())),userDto.getRole());
+        User user = new User(userDto.getEmail(),passwordEncoder.encode
+                (userDto.getPassword()),userDto.getFullname(),userDto.getRole());
         return userRepository.save(user);
 }
 }

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="user" content="user-information">
+    <title>User Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            background-color: #4CAF50;
+            padding: 20px;
+            color: white;
+            text-align: center;
+        }
+
+        .welcome {
+            padding: 20px;
+            color: #333;
+            text-align: center;
+        }
+
+        .dashboard {
+            padding: 20px;
+            background-color: #f0f0f0;
+            color: #333;
+            text-align: center;
+        }
+    </style>
+</head>
+   <body>
+      <form
+             th:action="@{/home}"
+             method="post"
+             role="form"
+             th:object="${user}"
+
+      >
+      <div class="header">
+        <h1>User Dashboard</h1>
+      </div>
+
+      <div class="welcome">
+        <h2>Welcome, !user</h2>
+      </div>
+
+      <div class="dashboard">
+         <h3>Your Dashboard</h3>
+    <!-- Add dashboard content here -->
+      </div>
+      </form>
+   </body>
+</html>

@@ -2,6 +2,7 @@ package com.WebPageProject1.UserRegistration_Login.Service;
 
 
 import com.WebPageProject1.UserRegistration_Login.model.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -16,9 +17,6 @@ public class CustomUserDetail implements UserDetails {
 
     }
 
-    private String getFullname(){
-        return user.getFullName();
-    }
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(()->user.getRole());
@@ -26,12 +24,22 @@ public class CustomUserDetail implements UserDetails {
 
     @Override
     public String getPassword() {
-        return user.getPassword();
+            if (this.user != null) {
+                return this.user.getPassword();
+            } else {
+
+                return null;
+            }
     }
+
 
     @Override
     public String getUsername() {
         return user.getEmail();
+    }
+
+    private String getFullName(){
+        return user.getFullName();
     }
 
     @Override
