@@ -5,16 +5,20 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "Users",uniqueConstraints = @UniqueConstraint(columnNames = "email"))
+@Table(name = "Users")
 public class User {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
     public User() {
     }
 
+    public User(String email, String password, String fullName, String role) {
+        this.email = email;
+        this.password = password;
+        this.fullName = fullName;
+        this.role = role;
+    }
+
+    @Id
+    private Long id;
     @Getter
     @Setter
     private String email;
@@ -28,12 +32,6 @@ public class User {
     @Getter
     private String role;
 
-    public User(String email, String password, String fullName, String role) {
-        super();
-        this.email = email;
-        this.password = password;
-        this.fullName = fullName;
-        this.role = role;
-    }
+
 
 }

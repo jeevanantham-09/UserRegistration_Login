@@ -1,6 +1,7 @@
 package com.WebPageProject1.UserRegistration_Login.Controller;
 
 import com.WebPageProject1.UserRegistration_Login.Dto.UserDto;
+import com.WebPageProject1.UserRegistration_Login.Service.CustomUserDetail;
 import com.WebPageProject1.UserRegistration_Login.Service.CustomUserDetailsService;
 import com.WebPageProject1.UserRegistration_Login.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,27 +32,19 @@ public class UserController {
         public String saveUser(@ModelAttribute("user")UserDto userDto,Model model){
             userService.save(userDto);
             model.addAttribute("message","Registered Successfully");
-            return "login";
+            return "registration";
     }
     @GetMapping("/login")
     public String getLoginPage(@ModelAttribute("user") UserDto userDto){
         return "login";}
     @PostMapping("/login")
     public String loginSuccess(Model model, Principal principal) {
-        if (principal != null) {
-            String username = principal.getName();
-            // Your login logic here
-
-            // Redirect to the user-page
-            return "home";
-        }
-
-        // Handle the case when principal is null, maybe redirect to an error page
-        return "login";
+        model.addAttribute("name", principal.getName());
+        return "home";
     }
-//    @GetMapping("/home")
-//    public String homePage(@ModelAttribute("user") UserDto userDto){
-//
-//        return "home";
-//    }
+    @GetMapping("/home")
+    public String homePage(@ModelAttribute("user") UserDto userDto){
+
+        return "home";
+    }
     }

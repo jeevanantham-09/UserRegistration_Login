@@ -13,8 +13,8 @@ public class CustomUserDetail implements UserDetails {
 
     private User user;
 
-    public CustomUserDetail(User user){
-
+    public CustomUserDetail(User user) {
+        this.user = user;
     }
 
     @Override
@@ -38,7 +38,7 @@ public class CustomUserDetail implements UserDetails {
         return user.getEmail();
     }
 
-    private String getFullName(){
+    public String getFullName(){
         return user.getFullName();
     }
 

@@ -11,7 +11,7 @@ import java.io.IOException;
 @Service
 public class CustomSuccessHandler implements AuthenticationSuccessHandler {
     @Override
-    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
+    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException  {
 
         var authourites=authentication.getAuthorities();
 
@@ -20,10 +20,10 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
         if(role.orElse("").equals("ADMIN")) {
             response.sendRedirect("/admin-page");
         } else if (role.orElse("").equals("USER")){
-            response.sendRedirect("user-page");}
-        else if (role.orElse("").equals("/")){
-            response.sendRedirect("/home");}
-        else{
+            response.sendRedirect("/user-page");
+        } else if (role.orElse("").equals("home")) {
+            response.sendRedirect("/home");
+        } else{
             response.sendRedirect("/error");
         }
     }
