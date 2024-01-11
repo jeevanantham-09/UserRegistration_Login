@@ -38,7 +38,7 @@ public class CustomUserDetail implements UserDetails {
         return user.getEmail();
     }
 
-    public String getFullName(){
+    private String getFullName(){
         return user.getFullName();
     }
 

@@ -127,6 +127,11 @@ margin-left: 25px;
 .social i{
 margin-right: 4px;
 }
+.submit{
+padding: 5px;
+color: #333;
+text-align: center;
+}
     </style>
 </head>
 <body>
@@ -135,8 +140,8 @@ margin-right: 4px;
     <div class="shape"></div>
 </div>
 <div class="container">
-    <div class="name" th:if="${name != null}">
-        [[${name}]]
+    <div class="message" th:if="${message != null}">
+        [[${message}]]
     </div>
 
     <form
@@ -147,15 +152,16 @@ margin-right: 4px;
 
     >
         <div class="form-group">
-            <label for="username">Email:</label>
-            <input  type="email" id="username" name="username" placeholder="Enter your email" required>
+            <label for="email">Email:</label>
+            <input th:field="*{email}" type="email" id="email" name="email" placeholder="Enter your email" required>
         </div>
 
         <div class="form-group">
             <label for="password">Password:</label>
-            <input  type="password" id="password" name="password" placeholder="Enter your password" required>
+            <input th:field="*{password}" type="password" id="password" name="password" placeholder="Enter your password" required>
         </div>
-      <button  type="submit" value="Register"> login</button>
+        <button type="submit" value="Register">Log In</button>
+
     </form>
 </div>
 </body>

@@ -38,9 +38,9 @@ public class UserController {
     public String getLoginPage(@ModelAttribute("user") UserDto userDto){
         return "login";}
     @PostMapping("/login")
-    public String loginSuccess(Model model, Principal principal) {
-        model.addAttribute("name", principal.getName());
-        return "home";
+    public String loginSuccess(@ModelAttribute("user")UserDto userDto,Model model){
+        model.addAttribute("message","Login successfully");
+        return "login";
     }
     @GetMapping("/home")
     public String homePage(@ModelAttribute("user") UserDto userDto){
